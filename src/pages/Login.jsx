@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../store/authSlice';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signIn } = useAuth();
+  // const { signIn } = useAuth();
+  const dispatch = useDispatch(setLogin);
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await signIn(email, password);
+     dispatch(setLogin({id:1 , email, password}));
+     navigate('/');
+
   };
 
   return (

@@ -10,15 +10,22 @@ import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+// import {ProtectedRoute} from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+
+
   return (
     <Router>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <div className="min-h-screen bg-gray-50">
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>} />
             <Route path="/products" element={<ProductList />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
@@ -28,7 +35,7 @@ function App() {
           </Routes>
           <Toaster position="top-right" />
         </div>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </Router>
   );
 }
