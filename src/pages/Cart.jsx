@@ -2,21 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import PaymentModal from '../components/PaymentModal';
+import { useSelector } from 'react-redux';
 
 function Cart() {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const cartItems = [
-    {
-      id: 1,
-      name: "Men's Wool Sweater",
-      brand: "Roadster",
-      price: 1299,
-      size: "M",
-      quantity: 1,
-      image: "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19818628/2022/9/6/ec27eee6-d613-4423-8e0f-007aea1603c31662468109188Sweaters1.jpg"
-    }
-  ];
-
+  const cartItems = useSelector((state) => state.auth.cartList);
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handlePaymentComplete = () => {

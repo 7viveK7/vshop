@@ -10,6 +10,7 @@ interface User {
 interface AuthState {
   user: User | null;
   loading: boolean;
+    cartList: any[];
 }
 
 
@@ -17,6 +18,7 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   loading: true,
+  cartList:[]
 };
 //selectors
 
@@ -33,8 +35,10 @@ const authSlice = createSlice({
       
     },
     setLogout: (state) => {
-      state.user = null;
-      state.loading = false;
+      return initialState
+    },
+    setCartList(state, action: PayloadAction<any[]>){
+        state.cartList.push(action.payload)
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
@@ -42,5 +46,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setLogin, setLogout, setLoading } = authSlice.actions;
+export const { setLogin, setLogout, setLoading,setCartList } = authSlice.actions;
 export default authSlice.reducer;
