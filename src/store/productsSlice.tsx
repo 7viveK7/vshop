@@ -1,12 +1,12 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { create } from 'domain';
+import { createAsyncThunk, createSlice,  } from '@reduxjs/toolkit';
+// import { create } from 'domain';
 
-interface User {
-  id: string;
-  email?: string;
-  password?: string;
-  // Add other user properties as needed
-}
+// interface User {
+//   id: string;
+//   email?: string;
+//   password?: string;
+//   // Add other user properties as needed
+// }
 
 interface ProductState {
 data: any[];
@@ -35,12 +35,12 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     
     builder
-    .addCase(getProducts.pending, (state, action) => {
+    .addCase(getProducts.pending, (state) => {
         state.status = "loading"})
     
     .addCase(getProducts.fulfilled, (state, action) => {
       state.data = action.payload})
-      .addCase(getProducts.rejected, (state, action) => {
+      .addCase(getProducts.rejected, (state) => {
         state.status = "failed"
       })
     }

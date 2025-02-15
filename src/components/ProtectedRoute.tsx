@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 // import { useAppSelector } from '@/app/hooks'; // Adjust the path as needed
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state: any) => state.auth.user);
   console.log(user);
 
   if (!user) {

@@ -34,7 +34,7 @@ const authSlice = createSlice({
       state.loading = false;
       
     },
-    setLogout: (state) => {
+    setLogout: () => {
       return initialState
     },
     setCartList(state, action: PayloadAction<any[]>){

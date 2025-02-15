@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // For React Native
 // import storage from "redux-persist/lib/storage"; // For Web (localStorage)
@@ -23,7 +23,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
       },
-    }),
+    }).concat(),
 });
 
 export const persistor = persistStore(store);
