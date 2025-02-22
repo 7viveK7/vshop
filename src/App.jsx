@@ -12,15 +12,24 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import {ProtectedRoute} from './components/ProtectedRoute';
 import ProtectedRoute from './components/ProtectedRoute';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const user = useSelector((state: any) => state.auth.user);
+  // console.log(user);
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
 
 
   return (
     <Router>
       {/* <AuthProvider> */}
         <div className="min-h-screen bg-gray-50">
-          <Navbar />
+       { !user &&   <Navbar />}
           <Routes>
             <Route path="/" element={
               <ProtectedRoute>
