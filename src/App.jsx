@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
 
-  const user = useSelector((state: any) => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
   // console.log(user);
 
   if (!user) {
@@ -29,7 +29,7 @@ function App() {
     <Router>
       {/* <AuthProvider> */}
         <div className="min-h-screen bg-gray-50">
-       { !user &&   <Navbar />}
+       { user &&   <Navbar />}
           <Routes>
             <Route path="/" element={
               <ProtectedRoute>
