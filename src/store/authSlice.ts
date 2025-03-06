@@ -22,7 +22,6 @@ const initialState: AuthState = {
 };
 //selectors
 
-// export const userSelector = (state: AuthState) => state.user;
 
 
 const authSlice = createSlice({
@@ -48,13 +47,18 @@ const authSlice = createSlice({
         state.cartList.push({ ...action.payload, count: 1 });
       }
     },
+    removeCart(state, action: PayloadAction<any[]>) {
+     const FilteredItems= state.cartList.filter((item)=>item?.id !==action.payload?.id)
+     state.cartList =FilteredItems
+    },
+
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
   },
 });
 
-export const { setLogin, setLogout, setLoading, setCartList } = authSlice.actions;
+export const { setLogin, setLogout, setLoading, setCartList,removeCart } = authSlice.actions;
 export default authSlice.reducer;
 
 

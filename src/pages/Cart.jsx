@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeCart } from '../store/authSlice';
 
 function Cart() {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const cartItems = useSelector((state) => state.auth.cartList);
+  const dispatch=useDispatch()
 
-  const handlePaymentComplete = () => {
-    // Here you would typically:
-    // 1. Clear the cart
-    // 2. Create an order
-    // 3. Redirect to order confirmation page
-    console.log('Payment completed');
-  };
+  const removeFromCart = (item) => {
+    dispatch(removeCart(item))
+
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-8">Shopping Bag</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-4">
           {cartItems.map((item) => (
@@ -34,8 +33,8 @@ function Cart() {
                 <p className="text-gray-500">{item.name}</p>
                 <p className="text-sm text-gray-500">Size: {item.size}</p>
                 <div className="mt-2 flex items-center space-x-4">
-                <p>{item?.count}</p>
-                  <button className="text-gray-500 hover:text-red-500">
+                  <p>{item?.count}</p>
+                  <button className="text-gray-500 hover:text-red-500" onClick={()=>removeFromCart(item)}>
                     <TrashIcon className="h-5 w-5" />
                   </button>
                 </div>
@@ -47,7 +46,7 @@ function Cart() {
           ))}
         </div>
 
-     
+
       </div>
 
     </div>

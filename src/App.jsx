@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Cart from './pages/Cart';
-import Wishlist from './pages/Wishlist';
+
 import Login from './pages/Login';
 
 // import {ProtectedRoute} from './components/ProtectedRoute';
@@ -30,7 +30,6 @@ function App() {
             <Route path="/" element={
               <ProtectedRoute>
                      <ProductList />
-
               </ProtectedRoute>} />
       
             <Route path="/cart" element={<Cart />} />        
