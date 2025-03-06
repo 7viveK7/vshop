@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBagIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+  const cartItems = useSelector((state) => state.auth.cartList);
+
   
 
   return (
@@ -20,7 +23,10 @@ function Navbar() {
           </div>
           <div className="flex items-center space-x-6">
             <Link to="/cart" className="text-gray-700 hover:text-green-500">
-              <ShoppingBagIcon className="h-6 w-6" />
+            <div className='flex flex-row'>
+              <ShoppingBagIcon className="h-6 w-6" /> 
+              <span>{cartItems.length && cartItems.length}</span>
+              </div>
             </Link>
            
           </div>

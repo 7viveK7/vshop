@@ -36,27 +36,7 @@ dispatch(getProducts())
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Filters */}
-        {/* <div className="w-full md:w-64 bg-white p-4 rounded-lg shadow">
-          <h2 className="text-lg font-semibold mb-4">Filters</h2>
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-medium mb-2">Price Range</h3>
-              <select
-                className="w-full border rounded p-2"
-                value={filters.priceRange}
-                onChange={(e) => setFilters({ ...filters, priceRange: e.target.value })}
-              >
-                <option value="all">All Prices</option>
-                <option value="0-1000">Under ₹1000</option>
-                <option value="1000-2000">₹1000 - ₹2000</option>
-                <option value="2000+">Above ₹2000</option>
-              </select>
-            </div>
-                    </div>
-        </div> */}
-
-        {/* Product Grid */}
+       
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             {products.map((product) => (

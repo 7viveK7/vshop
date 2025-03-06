@@ -10,7 +10,7 @@ interface User {
 interface AuthState {
   user: User | null;
   loading: boolean;
-    cartList: any[];
+  cartList: any[];
 }
 
 
@@ -18,7 +18,7 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   loading: true,
-  cartList:[]
+  cartList: []
 };
 //selectors
 
@@ -32,13 +32,21 @@ const authSlice = createSlice({
     setLogin: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
       state.loading = false;
-      
+
     },
     setLogout: () => {
       return initialState
     },
-    setCartList(state, action: PayloadAction<any[]>){
-        state.cartList.push(action.payload)
+    setCartList(state, action: PayloadAction<any[]>) {
+      const index = state.cartList.findIndex((item) => item?.id === action.payload?.id);
+
+      if (index !== -1) {
+        // If the item exists, update its count
+        state.cartList[index].count += 1;
+      } else {
+        // If the item doesn't exist, add it to the cart
+        state.cartList.push({ ...action.payload, count: 1 });
+      }
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
@@ -46,5 +54,10 @@ const authSlice = createSlice({
   },
 });
 
-export const { setLogin, setLogout, setLoading,setCartList } = authSlice.actions;
+export const { setLogin, setLogout, setLoading, setCartList } = authSlice.actions;
 export default authSlice.reducer;
+
+
+
+
+

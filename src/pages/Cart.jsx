@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 function Cart() {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const cartItems = useSelector((state) => state.auth.cartList);
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handlePaymentComplete = () => {
     // Here you would typically:
@@ -35,17 +34,7 @@ function Cart() {
                 <p className="text-gray-500">{item.name}</p>
                 <p className="text-sm text-gray-500">Size: {item.size}</p>
                 <div className="mt-2 flex items-center space-x-4">
-                  <select
-                    value={item.quantity}
-                    className="border rounded p-1"
-                    onChange={() => {}}
-                  >
-                    {[1, 2, 3, 4, 5].map((num) => (
-                      <option key={num} value={num}>
-                        Qty: {num}
-                      </option>
-                    ))}
-                  </select>
+                <p>{item?.count}</p>
                   <button className="text-gray-500 hover:text-red-500">
                     <TrashIcon className="h-5 w-5" />
                   </button>

@@ -19,18 +19,13 @@ const initialState: ProductState = {
  data: [],
  status: 'idle',
 };
-//selectors
-
-// export const userSelector = (state: AuthState) => state.user;
 
 
 const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-//    fetchProducts: (state, action: PayloadAction<any[]>) => {
-//         state.data = action.payload;
-//    }
+
   },
   extraReducers: (builder) => {
     
@@ -46,10 +41,7 @@ const productSlice = createSlice({
     }
 });
 
-// export const { fetchProducts } = productSlice.actions;
 export default productSlice.reducer;
-
-// export const getProducts =()=>{
 
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
   const response = await fetch('https://fakestoreapi.com/products')
@@ -57,10 +49,3 @@ export const getProducts = createAsyncThunk('products/getProducts', async () => 
   return data
 })
 
-// export const getProducts =()=>{
-//     return async function getProductsThunk(dispatch,getState){
-//         const response = await fetch('https://fakestoreapi.com/products')
-//         const data = await response.json()
-//         dispatch(fetchProducts(data))
-//     }
-// }
