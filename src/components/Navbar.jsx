@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBagIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline';
-import { useAuth } from '../contexts/AuthContext';
 
 function Navbar() {
-  const { user, signOut } = useAuth();
+  
 
   return (
     <nav className="bg-white shadow-md">

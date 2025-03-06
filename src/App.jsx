@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './contexts/AuthContext';
+
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
@@ -29,9 +29,9 @@ function App() {
           <Routes>
             <Route path="/" element={
               <ProtectedRoute>
-                <Home />
+                     <ProductList />
+
               </ProtectedRoute>} />
-            <Route path="/products" element={<ProductList />} />
       
             <Route path="/cart" element={<Cart />} />        
             <Route path="/login" element={<Login />} />
