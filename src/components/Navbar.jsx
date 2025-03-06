@@ -13,8 +13,8 @@ function Navbar() {
          
             <div className="hidden md:block ml-10">
               <div className="flex items-center space-x-8">
-                <Link to="/products" className="text-gray-700 hover:text-green-500">Brand</Link>   
-                <Link to="/products" className="text-gray-700 hover:text-green-500">HOME & LIVING</Link>
+                <Link to="/" className="text-gray-700 hover:text-green-500">Brand</Link>   
+                <Link to="/" className="text-gray-700 hover:text-green-500">Text</Link>
               </div>
             </div>
           </div>
