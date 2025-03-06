@@ -60,7 +60,7 @@ dispatch(getProducts())
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             {products.map((product) => (
-              <Link key={product.id} to={`/product/${product.id}`} className="group">
+              <Link key={product.id}  className="group">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
                   <img
                     src={product.image}
@@ -80,14 +80,11 @@ dispatch(getProducts())
                     <button onClick={(e) => {
                       e.preventDefault()
                       dispatch(setCartList(product))
-                    }} className="flex-1 bg-pink-500 text-white py-2 px-2 rounded-md hover:bg-pink-600 flex items-center justify-center space-x-2">
+                    }} className="flex-1 bg-primary text-white py-2 px-2 rounded-md hover:bg-green flex items-center justify-center space-x-2">
                       <ShoppingBagIcon className="h-5 w-5" />
-                      <span>ADD TO BAG</span>
+                      <span>ADD TO Cart</span>
                     </button>
-                    {/* <button className="flex-1 border border-gray-300 py-3 px-6 rounded-md hover:border-gray-400 flex items-center justify-center space-x-2">
-              <HeartIcon className="h-5 w-5" />
-              <span>WISHLIST</span>
-            </button> */}
+                  
                   </div>
                 </div>
               </Link>

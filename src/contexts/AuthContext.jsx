@@ -28,21 +28,6 @@ export function AuthProvider({ children }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email, password) => {
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-      
-      toast.success('Registration successful! Please log in.');
-      navigate('/login');
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
 
   const signIn = async (email, password) => {
     try {
@@ -75,7 +60,7 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     loading,
-    signUp,
+  
     signIn,
     signOut,
   };

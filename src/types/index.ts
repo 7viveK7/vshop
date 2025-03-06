@@ -25,7 +25,7 @@ export interface WishlistItem extends Product {}
 export interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signUp: (email: string, password: string) => Promise<void>;
+ 
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }

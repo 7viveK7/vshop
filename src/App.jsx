@@ -5,25 +5,21 @@ import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
-import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+
 // import {ProtectedRoute} from './components/ProtectedRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useSelector } from 'react-redux';
 
 function App() {
-
   const user = useSelector((state) => state.auth.user);
-  // console.log(user);
+
 
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-
-
 
   return (
     <Router>
@@ -36,11 +32,9 @@ function App() {
                 <Home />
               </ProtectedRoute>} />
             <Route path="/products" element={<ProductList />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/wishlist" element={<Wishlist />} />
+      
+            <Route path="/cart" element={<Cart />} />        
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
           </Routes>
           <Toaster position="top-right" />
         </div>

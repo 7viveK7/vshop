@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
-import PaymentModal from '../components/PaymentModal';
+
 import { useSelector } from 'react-redux';
 
 function Cart() {
@@ -58,41 +58,9 @@ function Cart() {
           ))}
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow h-fit">
-          <h2 className="text-lg font-medium mb-4">Price Details</h2>
-          <div className="space-y-2 pb-4 border-b">
-            <div className="flex justify-between">
-              <span>Total MRP</span>
-              <span>₹{total}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Discount on MRP</span>
-              <span className="text-green-500">-₹0</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Delivery Charges</span>
-              <span className="text-green-500">FREE</span>
-            </div>
-          </div>
-          <div className="flex justify-between py-4 font-medium">
-            <span>Total Amount</span>
-            <span>₹{total}</span>
-          </div>
-          <button 
-            className="w-full bg-pink-500 text-white py-3 rounded-md hover:bg-pink-600"
-            onClick={() => setIsPaymentModalOpen(true)}
-          >
-            PLACE ORDER
-          </button>
-        </div>
+     
       </div>
 
-      <PaymentModal
-        isOpen={isPaymentModalOpen}
-        onClose={() => setIsPaymentModalOpen(false)}
-        amount={total}
-        onPaymentComplete={handlePaymentComplete}
-      />
     </div>
   );
 }
